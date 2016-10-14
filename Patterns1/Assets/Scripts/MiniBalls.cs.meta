@@ -1,0 +1,37 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class MiniBalls : MonoBehaviour
+{
+    public float spawnWait;
+    public GameObject o;
+    public Vector3 spawnValues;
+    public float startWait;
+
+    // Use this for initialization
+    void Start()
+    {
+        StartCoroutine(SpawnBalls());
+    }
+
+    IEnumerator SpawnBalls()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(startWait);
+            Vector3 spawnPosition = new Vector3(spawnValues.x, spawnValues.y, spawnValues.z);
+            // yield return new WaitForSeconds(waveWait);
+
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        Vector3 diff = o.transform.position - transform.position;
+
+        diff.Normalize();
+
+        o.transform.position -= diff * .04f;
+    }
+}
